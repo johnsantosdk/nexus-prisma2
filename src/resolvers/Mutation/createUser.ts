@@ -1,9 +1,9 @@
 import { extendType, stringArg } from '@nexus/schema'
 
-export const CreateUser = extendType({
+export const createUser = extendType({
   type: 'Mutation',
   definition(t) {
-    t.crud.createOneUser()
+    // t.crud.createOneUser()
 
     t.field('createUser', {
       type: 'User',

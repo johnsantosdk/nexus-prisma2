@@ -12,7 +12,8 @@
     "dotenv": "^8.2.0",
     "graphql": "15.3.0",
     "graphql-yoga": "1.18.3",
-    "nexus-prisma": "0.13.0"
+    "nexus-prisma": "0.13.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@prisma/cli": "2.3.0",

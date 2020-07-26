@@ -1,6 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga')
-import { schema } from './schema'
-import { createContext } from './context'
+import { schema } from './schema/schema'
+import { createContext } from './context/context'
 
 new GraphQLServer({
   schema,

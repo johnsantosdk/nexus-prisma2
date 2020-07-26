@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import * as Context from "../context"
+import * as Context from "../context/context"
 
 
 
@@ -19,35 +19,6 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  PhoneCreateManyWithoutOwnerInput: { // input type
-    connect?: NexusGenInputs['PhoneWhereUniqueInput'][] | null; // [PhoneWhereUniqueInput!]
-    create?: NexusGenInputs['PhoneCreateWithoutOwnerInput'][] | null; // [PhoneCreateWithoutOwnerInput!]
-  }
-  PhoneCreateWithoutOwnerInput: { // input type
-    description?: string | null; // String
-    number?: number | null; // Int
-  }
-  PhoneWhereUniqueInput: { // input type
-    id?: number | null; // Int
-  }
-  PostCreateManyWithoutAuthorInput: { // input type
-    connect?: NexusGenInputs['PostWhereUniqueInput'][] | null; // [PostWhereUniqueInput!]
-    create?: NexusGenInputs['PostCreateWithoutAuthorInput'][] | null; // [PostCreateWithoutAuthorInput!]
-  }
-  PostCreateWithoutAuthorInput: { // input type
-    content?: string | null; // String
-    published?: boolean | null; // Boolean
-    title: string; // String!
-  }
-  PostWhereUniqueInput: { // input type
-    id?: number | null; // Int
-  }
-  UserCreateInput: { // input type
-    email: string; // String!
-    name?: string | null; // String
-    Phone?: NexusGenInputs['PhoneCreateManyWithoutOwnerInput'] | null; // PhoneCreateManyWithoutOwnerInput
-    posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
-  }
 }
 
 export interface NexusGenEnums {
@@ -56,9 +27,9 @@ export interface NexusGenEnums {
 export interface NexusGenRootTypes {
   Mutation: {};
   Phone: { // root type
-    description?: string | null; // String
+    description: string; // String!
     id: number; // Int!
-    number?: number | null; // Int
+    number?: string | null; // String
   }
   Post: { // root type
     content?: string | null; // String
@@ -80,24 +51,18 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  PhoneCreateManyWithoutOwnerInput: NexusGenInputs['PhoneCreateManyWithoutOwnerInput'];
-  PhoneCreateWithoutOwnerInput: NexusGenInputs['PhoneCreateWithoutOwnerInput'];
-  PhoneWhereUniqueInput: NexusGenInputs['PhoneWhereUniqueInput'];
-  PostCreateManyWithoutAuthorInput: NexusGenInputs['PostCreateManyWithoutAuthorInput'];
-  PostCreateWithoutAuthorInput: NexusGenInputs['PostCreateWithoutAuthorInput'];
-  PostWhereUniqueInput: NexusGenInputs['PostWhereUniqueInput'];
-  UserCreateInput: NexusGenInputs['UserCreateInput'];
 }
 
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
-    createOneUser: NexusGenRootTypes['User']; // User!
     createUser: NexusGenRootTypes['User']; // User!
+    createUserPhone: NexusGenRootTypes['Phone']; // Phone!
+    createUserWithPhone: NexusGenRootTypes['User']; // User!
   }
   Phone: { // field return type
-    description: string | null; // String
+    description: string; // String!
     id: number; // Int!
-    number: number | null; // Int
+    number: string | null; // String
     owner: NexusGenRootTypes['User'] | null; // User
   }
   Post: { // field return type
@@ -121,12 +86,19 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createOneUser: { // args
-      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
-    }
     createUser: { // args
       email?: string | null; // String
       name?: string | null; // String
+    }
+    createUserPhone: { // args
+      description?: string | null; // String
+      number?: string | null; // String
+    }
+    createUserWithPhone: { // args
+      description?: string | null; // String
+      email?: string | null; // String
+      name?: string | null; // String
+      number?: string | null; // String
     }
   }
   Query: {
@@ -143,7 +115,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Mutation" | "Phone" | "Post" | "Query" | "User";
 
-export type NexusGenInputNames = "PhoneCreateManyWithoutOwnerInput" | "PhoneCreateWithoutOwnerInput" | "PhoneWhereUniqueInput" | "PostCreateManyWithoutAuthorInput" | "PostCreateWithoutAuthorInput" | "PostWhereUniqueInput" | "UserCreateInput";
+export type NexusGenInputNames = never;
 
 export type NexusGenEnumNames = never;
 

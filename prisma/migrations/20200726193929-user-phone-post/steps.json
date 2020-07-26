@@ -98,9 +98,23 @@
     {
       "tag": "CreateField",
       "model": "User",
+      "field": "phone",
+      "type": "Phone",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
       "field": "posts",
       "type": "Post",
       "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "admin",
+      "type": "Boolean",
+      "arity": "Required"
     },
     {
       "tag": "CreateModel",
@@ -299,20 +313,31 @@
       "tag": "CreateField",
       "model": "Phone",
       "field": "number",
-      "type": "Int",
+      "type": "String",
       "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Phone",
+          "field": "number"
+        },
+        "directive": "unique"
+      }
     },
     {
       "tag": "CreateField",
       "model": "Phone",
       "field": "description",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Phone",
-      "field": "ownerId",
+      "field": "userId",
       "type": "Int",
       "arity": "Optional"
     },
@@ -346,7 +371,7 @@
         "directive": "relation"
       },
       "argument": "fields",
-      "value": "[ownerId]"
+      "value": "[userId]"
     },
     {
       "tag": "CreateArgument",

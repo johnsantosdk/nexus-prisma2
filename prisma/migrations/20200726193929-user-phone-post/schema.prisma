@@ -11,7 +11,9 @@ model User {
   email String  @unique
   id    Int     @default(autoincrement()) @id
   name  String?
+  phone Phone
   posts Post[]
+  admin Boolean
 }
 
 model Post {
@@ -25,8 +27,8 @@ model Post {
 
 model Phone {
   id          Int @default(autoincrement()) @id
-  number      Int?
-  description String?
-  ownerId     Int?
-  owner       User?   @relation(fields: [ownerId], references: [id])
+  number      String? @unique
+  description String
+  userId      Int?
+  owner       User?   @relation(fields: [userId], references: [id])
 }
