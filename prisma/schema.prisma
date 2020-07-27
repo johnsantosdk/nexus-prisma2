@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:@localhost:3306/db_nexus_prisma?schema=public"
+  url      = "mysql://root:@localhost:3306/db_nexus_prisma2?schema=public"
 }
 
 model User {
@@ -13,7 +13,7 @@ model User {
   name  String?
   phone Phone
   posts Post[]
-  admin Boolean
+  role Role @default(USER)
 }
 
 model Post {
@@ -31,4 +31,9 @@ model Phone {
   description String
   userId      Int?
   owner       User?   @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
 }

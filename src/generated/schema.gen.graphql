@@ -5,7 +5,7 @@
 type Mutation {
   createUser(email: String, name: String): User!
   createUserPhone(description: String, number: String): Phone!
-  createUserWithPhone(description: String, email: String, name: String, number: String): User!
+  createUserWithPhone(description: String, email: String, name: String, number: String, role: String): User!
 }
 
 type Phone {
@@ -28,9 +28,16 @@ type Query {
   filterPosts(searchString: String): [Post!]!
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
 type User {
   email: String!
   id: Int!
   name: String
+  phone: Phone!
   posts: [Post!]!
+  role: Role!
 }

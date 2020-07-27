@@ -10,14 +10,16 @@ export const createUserWithPhone = extendType({
       args: {
         name: stringArg(),
         email: stringArg(),
+        role: stringArg(),
         number: stringArg(),
         description: stringArg()
       },
-      resolve: async (_, { name, email, number, description }, ctx) => {
+      resolve: async (_, { name, email, number, description, role }, ctx) => {
         const user = await ctx.prisma.user.create({
           data: {
             name,
             email,
+            role,
           }
         })
         console.log(user)

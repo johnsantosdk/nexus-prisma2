@@ -22,6 +22,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  Role: "ADMIN" | "USER"
 }
 
 export interface NexusGenRootTypes {
@@ -42,6 +43,7 @@ export interface NexusGenRootTypes {
     email: string; // String!
     id: number; // Int!
     name?: string | null; // String
+    role: NexusGenEnums['Role']; // Role!
   }
   String: string;
   Int: number;
@@ -51,6 +53,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  Role: NexusGenEnums['Role'];
 }
 
 export interface NexusGenFieldTypes {
@@ -80,7 +83,9 @@ export interface NexusGenFieldTypes {
     email: string; // String!
     id: number; // Int!
     name: string | null; // String
+    phone: NexusGenRootTypes['Phone']; // Phone!
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
+    role: NexusGenEnums['Role']; // Role!
   }
 }
 
@@ -99,6 +104,7 @@ export interface NexusGenArgTypes {
       email?: string | null; // String
       name?: string | null; // String
       number?: string | null; // String
+      role?: string | null; // String
     }
   }
   Query: {
@@ -117,7 +123,7 @@ export type NexusGenObjectNames = "Mutation" | "Phone" | "Post" | "Query" | "Use
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "Role";
 
 export type NexusGenInterfaceNames = never;
 
