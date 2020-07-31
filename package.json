@@ -2,7 +2,7 @@
   "name": "typescript-graphql",
   "scripts": {
     "prestart": "npx prisma generate",
-    "start": "ts-node-dev --no-notify --respawn --transpileOnly src/index.ts",
+    "start": "ts-node-dev --no-notify --respawn --transpileOnly --ignore-watch node_modules src/index.ts",
     "start2": "nodemon -e ts,prisma src/index.ts",
     "watch:prisma": "onchange 'prisma/schema.prisma' -- npm start"
   },
@@ -13,7 +13,8 @@
     "graphql": "15.3.0",
     "graphql-yoga": "1.18.3",
     "nexus-prisma": "0.13.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sucrase": "^3.15.0"
   },
   "devDependencies": {
     "@prisma/cli": "2.3.0",

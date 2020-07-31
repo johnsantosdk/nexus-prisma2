@@ -8,7 +8,7 @@ export const createUserWithPhone = extendType({
     t.field('createUserWithPhone', {
       type: 'User',
       args: {
-        name: stringArg(),
+        name: stringArg({nullable: false}),
         email: stringArg(),
         role: stringArg(),
         number: stringArg(),

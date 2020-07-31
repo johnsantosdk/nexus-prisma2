@@ -9,6 +9,7 @@ export const User = objectType({
     t.model.phone()
     t.model.role()
     t.model.posts({
+      type: 'Post',
       pagination: false,
     })
   },

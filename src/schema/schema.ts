@@ -1,9 +1,8 @@
 import { intArg, makeSchema, objectType, stringArg } from '@nexus/schema'
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import { User, Post, Phone } from '.'
-import { findPosts, listPosts } from '../resolvers/Query'
-import { createUser, createUserPhone, createUserWithPhone } from '../resolvers/Mutation'
-// const {  path } = require('path') 
+import { findPosts, listPosts, crudQuery } from '../resolvers/Query'//Queries
+import { createUser, createUserPhone, createUserWithPhone, crudMutation } from '../resolvers/Mutation' //Mutations
 
 
 export const schema = makeSchema({
@@ -15,7 +14,9 @@ export const schema = makeSchema({
     findPosts,
     createUser,
     createUserPhone,
-    createUserWithPhone
+    createUserWithPhone,
+    crudQuery,
+    crudMutation
   ],
   plugins: [nexusPrismaPlugin()],
   outputs: {
