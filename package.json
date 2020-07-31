@@ -2,8 +2,9 @@
   "name": "typescript-graphql",
   "scripts": {
     "prestart": "npx prisma generate",
-    "start": "ts-node-dev --no-notify --respawn --transpileOnly --ignore-watch node_modules src/index.ts",
-    "start2": "nodemon -e ts,prisma src/index.ts",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly --ignore-watch node_modules src/index.ts",
+    "start": "node dist/index.js",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "watch:prisma": "onchange 'prisma/schema.prisma' -- npm start",
     "test": "jest"
   },
@@ -18,12 +19,18 @@
     "sucrase": "^3.15.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@prisma/cli": "2.3.0",
     "@types/node": "12.12.50",
     "@types/ws": "7.2.6",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "babel-cli": "^6.26.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^7.5.0",
