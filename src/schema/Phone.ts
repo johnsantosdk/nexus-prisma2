@@ -2,10 +2,10 @@ import { objectType, nullabilityGuardPlugin } from '@nexus/schema'
 
 export const Phone = objectType({
   name: 'Phone',
-  definition(t) {
+  definition (t) {
     t.model.id()
     t.model.number()
     t.model.description()
     t.model.owner()
-  },
+  }
 })

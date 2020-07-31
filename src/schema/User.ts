@@ -2,7 +2,7 @@ import { objectType } from '@nexus/schema'
 
 export const User = objectType({
   name: 'User',
-  definition(t) {
+  definition (t) {
     t.model.id()
     t.model.name()
     t.model.email()
@@ -10,7 +10,7 @@ export const User = objectType({
     t.model.role()
     t.model.posts({
       type: 'Post',
-      pagination: false,
+      pagination: false
     })
-  },
+  }
 })

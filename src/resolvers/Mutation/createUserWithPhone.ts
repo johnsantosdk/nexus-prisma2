@@ -2,13 +2,13 @@ import { extendType, stringArg } from '@nexus/schema'
 
 export const createUserWithPhone = extendType({
   type: 'Mutation',
-  definition(t) {
+  definition (t) {
     // t.crud.createOneUser()
 
     t.field('createUserWithPhone', {
       type: 'User',
       args: {
-        name: stringArg({nullable: false}),
+        name: stringArg({ nullable: false }),
         email: stringArg(),
         role: stringArg(),
         number: stringArg(),
@@ -19,7 +19,7 @@ export const createUserWithPhone = extendType({
           data: {
             name,
             email,
-            role,
+            role
           }
         })
         console.log(user)
@@ -27,11 +27,11 @@ export const createUserWithPhone = extendType({
           data: {
             number,
             description,
-            owner: { connect: {id: user.id} },
+            owner: { connect: { id: user.id } }
           }
         })
         return user
-      },
+      }
     })
   }
 })
