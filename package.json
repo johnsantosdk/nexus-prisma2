@@ -4,7 +4,8 @@
     "prestart": "npx prisma generate",
     "start": "ts-node-dev --no-notify --respawn --transpileOnly --ignore-watch node_modules src/index.ts",
     "start2": "nodemon -e ts,prisma src/index.ts",
-    "watch:prisma": "onchange 'prisma/schema.prisma' -- npm start"
+    "watch:prisma": "onchange 'prisma/schema.prisma' -- npm start",
+    "test": "jest"
   },
   "dependencies": {
     "@nexus/schema": "0.14.0",
@@ -31,7 +32,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.2.2",
     "nodemon": "^2.0.3",
+    "ts-jest": "^26.1.4",
     "ts-node": "8.10.2",
     "ts-node-dev": "1.0.0-pre.50",
     "typescript": "3.9.6"
