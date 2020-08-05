@@ -57,8 +57,19 @@
       "tag": "CreateField",
       "model": "User",
       "field": "id",
-      "type": "Int",
+      "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     },
     {
       "tag": "CreateDirective",
@@ -83,39 +94,28 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "id"
-        },
-        "directive": "id"
-      }
+      "value": "cuid()"
     },
     {
       "tag": "CreateField",
       "model": "User",
       "field": "name",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "password",
+      "type": "String",
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "User",
       "field": "phone",
       "type": "Phone",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateField",
-      "model": "User",
-      "field": "posts",
-      "type": "Post",
-      "arity": "List"
+      "arity": "Optional"
     },
     {
       "tag": "CreateField",
@@ -151,160 +151,25 @@
     },
     {
       "tag": "CreateModel",
-      "model": "Post"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "authorId",
-      "type": "Int",
-      "arity": "Optional"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "content",
-      "type": "String",
-      "arity": "Optional"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "id",
-      "type": "Int",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "id"
-        },
-        "directive": "default"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "id"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "id"
-        },
-        "directive": "id"
-      }
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "published",
-      "type": "Boolean",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "published"
-        },
-        "directive": "default"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "published"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "value": "false"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "title",
-      "type": "String",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Post",
-      "field": "author",
-      "type": "User",
-      "arity": "Optional"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "author"
-        },
-        "directive": "relation"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "author"
-        },
-        "directive": "relation"
-      },
-      "argument": "fields",
-      "value": "[authorId]"
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "author"
-        },
-        "directive": "relation"
-      },
-      "argument": "references",
-      "value": "[id]"
-    },
-    {
-      "tag": "CreateModel",
       "model": "Phone"
     },
     {
       "tag": "CreateField",
       "model": "Phone",
       "field": "id",
-      "type": "Int",
+      "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Phone",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     },
     {
       "tag": "CreateDirective",
@@ -329,25 +194,14 @@
         "directive": "default"
       },
       "argument": "",
-      "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Phone",
-          "field": "id"
-        },
-        "directive": "id"
-      }
+      "value": "cuid()"
     },
     {
       "tag": "CreateField",
       "model": "Phone",
       "field": "number",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateDirective",
@@ -371,15 +225,15 @@
       "tag": "CreateField",
       "model": "Phone",
       "field": "userId",
-      "type": "Int",
-      "arity": "Optional"
+      "type": "String",
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Phone",
       "field": "owner",
       "type": "User",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateDirective",

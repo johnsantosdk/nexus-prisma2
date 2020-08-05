@@ -11,8 +11,8 @@ export const createUser = extendType({
         name: stringArg(),
         email: stringArg()
       },
-      resolve: (_, { name, email }, ctx) => {
-        return ctx.prisma.user.create({
+      resolve: async (_, { name, email }, ctx) => {
+        return await ctx.prisma.user.create({
           data: {
             name,
             email

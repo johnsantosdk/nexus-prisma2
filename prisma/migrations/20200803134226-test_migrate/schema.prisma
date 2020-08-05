@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:@localhost:3306/db_nexus_prisma2?schema=public"
+  url = "***"
 }
 
 model User {

@@ -1,4 +1,4 @@
-import { objectType, nullabilityGuardPlugin } from '@nexus/schema'
+import { objectType } from '@nexus/schema'
 
 export const Phone = objectType({
   name: 'Phone',

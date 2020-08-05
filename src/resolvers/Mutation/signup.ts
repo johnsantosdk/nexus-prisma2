@@ -1,16 +1,16 @@
 import { extendType, stringArg } from '@nexus/schema'
-require('dotenv').config()
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
+const JWT_SECRET = process.env.JWT_SECRET
+const TOKEN_EXPIRES = process.env.TOKEN_EXPIRES
 const salt = bcrypt.genSaltSync(10)
 
-export const createUserWithPhone = extendType({
+export const signup = extendType({
   type: 'Mutation',
   definition (t) {
-    // t.crud.createOneUser()
-
-    t.field('createUserWithPhone', {
-      type: 'User',
+    t.field('signup', {
+      type: 'AuthPayload',
       args: {
         name: stringArg({ nullable: false }),
         email: stringArg(),
@@ -34,7 +34,12 @@ export const createUserWithPhone = extendType({
             }
           }
         })
-        return user
+        const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRES })
+
+        return {
+          token,
+          user
+        }
       }
     })
   }

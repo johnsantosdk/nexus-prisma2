@@ -19,68 +19,15 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  BooleanFilter: { // input type
-    equals?: boolean | null; // Boolean
-    not?: boolean | null; // Boolean
-  }
-  IntFilter: { // input type
-    equals?: number | null; // Int
-    gt?: number | null; // Int
-    gte?: number | null; // Int
-    in?: number[] | null; // [Int!]
-    lt?: number | null; // Int
-    lte?: number | null; // Int
-    not?: number | null; // Int
-    notIn?: number[] | null; // [Int!]
-  }
-  NullableIntFilter: { // input type
-    equals?: number | null; // Int
-    gt?: number | null; // Int
-    gte?: number | null; // Int
-    in?: number[] | null; // [Int!]
-    lt?: number | null; // Int
-    lte?: number | null; // Int
-    not?: number | null; // Int
-    notIn?: number[] | null; // [Int!]
-  }
-  NullableStringFilter: { // input type
-    contains?: string | null; // String
-    endsWith?: string | null; // String
-    equals?: string | null; // String
-    gt?: string | null; // String
-    gte?: string | null; // String
-    in?: string[] | null; // [String!]
-    lt?: string | null; // String
-    lte?: string | null; // String
-    not?: string | null; // String
-    notIn?: string[] | null; // [String!]
-    startsWith?: string | null; // String
-  }
   PhoneWhereInput: { // input type
     AND?: NexusGenInputs['PhoneWhereInput'][] | null; // [PhoneWhereInput!]
     description?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['PhoneWhereInput'][] | null; // [PhoneWhereInput!]
-    number?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    number?: NexusGenInputs['StringFilter'] | null; // StringFilter
     OR?: NexusGenInputs['PhoneWhereInput'][] | null; // [PhoneWhereInput!]
     owner?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    userId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-  }
-  PostFilter: { // input type
-    every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-  }
-  PostWhereInput: { // input type
-    AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    authorId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    content?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    OR?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    published?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
-    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   StringFilter: { // input type
     contains?: string | null; // String
@@ -99,22 +46,23 @@ export interface NexusGenInputs {
     email?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    password?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     role?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
   }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     email?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    password?: NexusGenInputs['StringFilter'] | null; // StringFilter
     phone?: NexusGenInputs['PhoneWhereInput'] | null; // PhoneWhereInput
-    posts?: NexusGenInputs['PostFilter'] | null; // PostFilter
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserWhereUniqueInput: { // input type
     email?: string | null; // String
-    id?: number | null; // Int
+    id?: string | null; // String
   }
 }
 
@@ -124,23 +72,21 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  AuthPayload: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Mutation: {};
   Phone: { // root type
     description: string; // String!
-    id: number; // Int!
-    number?: string | null; // String
-  }
-  Post: { // root type
-    content?: string | null; // String
-    id: number; // Int!
-    published: boolean; // Boolean!
-    title: string; // String!
+    id: string; // String!
+    number: string; // String!
   }
   Query: {};
   User: { // root type
     email: string; // String!
-    id: number; // Int!
-    name?: string | null; // String
+    id: string; // String!
+    name: string; // String!
     role: NexusGenEnums['Role']; // Role!
   }
   String: string;
@@ -151,13 +97,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  BooleanFilter: NexusGenInputs['BooleanFilter'];
-  IntFilter: NexusGenInputs['IntFilter'];
-  NullableIntFilter: NexusGenInputs['NullableIntFilter'];
-  NullableStringFilter: NexusGenInputs['NullableStringFilter'];
   PhoneWhereInput: NexusGenInputs['PhoneWhereInput'];
-  PostFilter: NexusGenInputs['PostFilter'];
-  PostWhereInput: NexusGenInputs['PostWhereInput'];
   StringFilter: NexusGenInputs['StringFilter'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
@@ -167,37 +107,33 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
+  AuthPayload: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Mutation: { // field return type
     createUser: NexusGenRootTypes['User']; // User!
     createUserPhone: NexusGenRootTypes['Phone']; // Phone!
     createUserWithPhone: NexusGenRootTypes['User']; // User!
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
   }
   Phone: { // field return type
     description: string; // String!
-    id: number; // Int!
-    number: string | null; // String
-    owner: NexusGenRootTypes['User'] | null; // User
-  }
-  Post: { // field return type
-    author: NexusGenRootTypes['User'] | null; // User
-    content: string | null; // String
-    id: number; // Int!
-    published: boolean; // Boolean!
-    title: string; // String!
+    id: string; // String!
+    number: string; // String!
+    owner: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
-    feed: NexusGenRootTypes['Post'][]; // [Post!]!
-    filterPosts: NexusGenRootTypes['Post'][]; // [Post!]!
     phones: NexusGenRootTypes['Phone'][]; // [Phone!]!
     usersList: NexusGenRootTypes['User'][]; // [User!]!
   }
   User: { // field return type
     email: string; // String!
-    id: number; // Int!
-    name: string | null; // String
-    phone: NexusGenRootTypes['Phone']; // Phone!
-    posts: NexusGenRootTypes['Post'][]; // [Post!]!
+    id: string; // String!
+    name: string; // String!
+    phone: NexusGenRootTypes['Phone'] | null; // Phone
     role: NexusGenEnums['Role']; // Role!
   }
 }
@@ -217,16 +153,26 @@ export interface NexusGenArgTypes {
       email?: string | null; // String
       name: string; // String!
       number?: string | null; // String
+      password?: string | null; // String
       role?: string | null; // String
     }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
+    login: { // args
+      email?: string | null; // String
+      password?: string | null; // String
+    }
+    signup: { // args
+      description?: string | null; // String
+      email?: string | null; // String
+      name: string; // String!
+      number?: string | null; // String
+      password?: string | null; // String
+      role?: string | null; // String
+    }
   }
   Query: {
-    filterPosts: { // args
-      searchString?: string | null; // String
-    }
     phones: { // args
       skip?: number | null; // Int
     }
@@ -243,9 +189,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Mutation" | "Phone" | "Post" | "Query" | "User";
+export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Phone" | "Query" | "User";
 
-export type NexusGenInputNames = "BooleanFilter" | "IntFilter" | "NullableIntFilter" | "NullableStringFilter" | "PhoneWhereInput" | "PostFilter" | "PostWhereInput" | "StringFilter" | "UserOrderByInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "PhoneWhereInput" | "StringFilter" | "UserOrderByInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = "OrderByArg" | "Role";
 
