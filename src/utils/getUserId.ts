@@ -1,6 +1,7 @@
+import { createContext } from '../context/context'
 const jwt = require('jsonwebtoken')
 
-export function getUserId (context) {
+export function getUserId (context: createContext) {
   const Authorization = context.request.get('Authorization')
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '')
