@@ -1,12 +1,15 @@
 import { schema } from './schema/schema'
 import { createContext } from './context/context'
-const { GraphQLServer } = require('graphql-yoga')
+import { GraphQLServer } from 'graphql-yoga'
+import { PrismaClient } from '@prisma/client'
 
-new GraphQLServer({
+const server = new GraphQLServer({
   schema,
-  context: createContext
-}).start(() =>
-  console.log(
-    '🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql#using-the-graphql-api'
-  )
-)
+  // context: createContext
+  context: req => ({
+    ...req,
+    prisma: new PrismaClient()
+  })
+})
+
+server.start(() => console.log('🚀 Server is running on http://localhost:4000'))

@@ -16,7 +16,7 @@ export const createUserWithPhone = extendType({
         email: stringArg(),
         password: stringArg(),
         number: stringArg(),
-        description: stringArg(),
+        description: stringArg({ nullable: false }),
         role: stringArg()
       },
       resolve: async (_, args, ctx) => {

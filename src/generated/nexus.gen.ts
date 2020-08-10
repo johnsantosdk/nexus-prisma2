@@ -126,6 +126,7 @@ export interface NexusGenFieldTypes {
     owner: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
+    getPhone: NexusGenRootTypes['Phone']; // Phone!
     phones: NexusGenRootTypes['Phone'][]; // [Phone!]!
     usersList: NexusGenRootTypes['User'][]; // [User!]!
   }
@@ -149,7 +150,7 @@ export interface NexusGenArgTypes {
       number?: string | null; // String
     }
     createUserWithPhone: { // args
-      description?: string | null; // String
+      description: string; // String!
       email?: string | null; // String
       name: string; // String!
       number?: string | null; // String
@@ -173,6 +174,9 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    getPhone: { // args
+      number: string; // String!
+    }
     phones: { // args
       skip?: number | null; // Int
     }

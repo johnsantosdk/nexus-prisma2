@@ -1,7 +1,7 @@
 import { makeSchema } from '@nexus/schema'
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import { User, Phone, AuthPayload } from '.'
-import { crudQuery } from '../resolvers/Query'// Queries
+import { crudQuery, getPhone } from '../resolvers/Query'// Queries
 import { createUser, createUserPhone, createUserWithPhone, crudMutation, signup, login } from '../resolvers/Mutation' // Mutations
 
 export const schema = makeSchema({
@@ -12,8 +12,9 @@ export const schema = makeSchema({
     createUser,
     createUserPhone,
     createUserWithPhone,
-    crudQuery,
     crudMutation,
+    crudQuery,
+    getPhone,
     signup,
     login
   ],

@@ -11,7 +11,7 @@ type AuthPayload {
 type Mutation {
   createUser(email: String, name: String): User!
   createUserPhone(description: String, number: String): Phone!
-  createUserWithPhone(description: String, email: String, name: String!, number: String, password: String, role: String): User!
+  createUserWithPhone(description: String!, email: String, name: String!, number: String, password: String, role: String): User!
   deleteOneUser(where: UserWhereUniqueInput!): User
   login(email: String, password: String): AuthPayload!
   signup(description: String, email: String, name: String!, number: String, password: String, role: String): AuthPayload!
@@ -41,6 +41,7 @@ input PhoneWhereInput {
 }
 
 type Query {
+  getPhone(number: String!): Phone!
   phones(skip: Int): [Phone!]!
   usersList(orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
 }

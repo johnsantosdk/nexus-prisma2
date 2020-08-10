@@ -14,7 +14,6 @@ export const login = extendType({
         password: stringArg()
       },
       resolve: async (_, { email, password }, ctx, info) => {
-        console.log('Context: ', ctx)
         const user = await ctx.prisma.user.findOne({
           where: {
             email
