@@ -1,11 +1,18 @@
-import { ContextParameters } from 'graphql-yoga/dist/types'
+import { getUserId } from '.'
 
-export function getUser (ctx: ContextParameters) {
-  const auth = ctx.request.headers
-  console.log(auth)
-  // if (users[auth]) {
-  //   return users[auth]
-  // } else {
-  //   return null
-  // }
+export async function getUser (context) {
+  const userId = getUserId(context)
+  console.log('userId no getUser: ', userId)
+  const user = await context.prisma.user.findOne({
+    select: {
+      name: true,
+      email: true,
+      role: true
+    },
+    where: {
+      id: userId
+    }
+  })
+
+  return user
 }

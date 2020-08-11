@@ -1,5 +1,5 @@
 import { extendType, stringArg } from '@nexus/schema'
-import { getUserId } from '../../utils'
+import { getUserId, getUser } from '../../utils'
 
 export const getPhone = extendType({
   type: 'Query',
@@ -18,6 +18,7 @@ export const getPhone = extendType({
             number: number
           }
         })
+        console.log(getUser(ctx))
         console.log(userId)
         return phone
       }
