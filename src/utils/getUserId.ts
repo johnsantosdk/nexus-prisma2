@@ -5,10 +5,10 @@ export function getUserId (context) {
   const Authorization = context.request.get('Authorization')
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '')
-    const { userId } = jwt.verify(token, process.env.JWT_SECRET)
+    const { user } = jwt.verify(token, process.env.JWT_SECRET)
 
-    return userId
+    return user
   }
 
-  throw new Error('Not allowed!')
+  throw new Error('Not allowed in get UserId!')
 }

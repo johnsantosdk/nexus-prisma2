@@ -27,8 +27,8 @@ export const login = extendType({
         if (!valid) {
           throw new Error('Invalid credentials!')
         }
-
-        const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRES })
+        delete user.password
+        const token = jwt.sign({ user }, JWT_SECRET, { expiresIn: TOKEN_EXPIRES })
 
         return {
           token,
